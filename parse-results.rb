@@ -28,7 +28,7 @@ first_page = fetch_with_cache(SEARCH % 1)
 pages = first_page[/Page 1 of (\d+)/, 1].to_i
 results = []
 
-pbar = ProgressBar.new("Fetching results", pages)
+pbar = ProgressBar.new("Fetch/parse", pages)
 iconv = Iconv.new("UTF-8", "Windows-1252")
 (1 .. pages).each do |page|
   doc = Hpricot(fetch_with_cache(SEARCH % page))
