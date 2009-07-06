@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+require File.join(File.dirname(__FILE__), "..", "config", "environment")
 require "hpricot"
 require "fileutils"
 require "open-uri"
@@ -6,13 +8,13 @@ require "progressbar"
 require "iconv"
 
 SEARCH = "http://www.dailymail.co.uk/home/search.html?pageOffset=%d&pageSize=50&orderBy=relevDesc&searchPhrase=cancer+risk&contenttype=article"
-TEMP_DIR = File.join(File.dirname(__FILE__), "tmp")
+TEMP_DIR = File.join(Rails.root, "tmp")
 FileUtils.mkdir_p(TEMP_DIR)
 
 Result = Struct.new(:link, :title, :summary)
 
 def fetch_with_cache(uri)
-  cache_path = File.join("tmp", Digest::SHA1.hexdigest(uri))
+  cache_path = File.join(TEMP_DIR, Digest::SHA1.hexdigest(uri))
   unless File.exist?(cache_path)
     data = open(uri){ |f| f.read }
     open(cache_path, "w") do |cache|
