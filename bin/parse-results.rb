@@ -11,8 +11,6 @@ SEARCH = "http://www.dailymail.co.uk/home/search.html?pageOffset=%d&pageSize=50&
 TEMP_DIR = File.join(Rails.root, "tmp")
 FileUtils.mkdir_p(TEMP_DIR)
 
-Result = Struct.new(:link, :title, :summary)
-
 def fetch_with_cache(uri)
   cache_path = File.join(TEMP_DIR, Digest::SHA1.hexdigest(uri))
   unless File.exist?(cache_path)
@@ -32,14 +30,17 @@ results = []
 pbar = ProgressBar.new("Fetch/parse", pages)
 iconv = Iconv.new("UTF-8", "Windows-1252")
 (1 .. pages).each do |page|
-  doc = Hpricot(fetch_with_cache(SEARCH % page))
+  uri = SEARCH % page
+  doc = Hpricot(fetch_with_cache(uri))
 
-  results += doc.search(".sch-result").map{ |node|
-    link = node.at("a").attributes["href"]
+  doc.search(".sch-result").each do |node|
+    link = URI.parse(uri).merge(node.at("a").attributes["href"]).to_s
     title = iconv.iconv(node.at("h3").inner_text.strip)
     summary = iconv.iconv(node.at(".sch-res-preview").inner_text.strip)
-    Result.new(link, title, summary)
-  }
+
+    next if Article.find_by_link(link)
+    Article.create!(:link => link, :title => title, :summary => summary)
+  end
 
   pbar.inc
 end
