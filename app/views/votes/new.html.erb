@@ -1,0 +1,37 @@
+<div id="summary">
+  <h2><%= h @article.title %></h2>
+  <p><%= h @article.summary %></p>
+</div>
+
+<div id="classify">
+  <% form_for @vote do |f| %>
+    <%= f.hidden_field :article_id %>
+
+    <div class="row">
+      <%= f.label :effect, "What is the effect?" %>
+      <%= f.select :effect, ["No effect", "Increased risk of cancer", "Reduced risk of cancer"] %>
+    </div>
+
+    <div class="row">
+      <%= f.label :general, "What kind of a thing is it?" %>
+      <%= f.text_field :general %>
+      <p>Be as terse as possible, e.g. “wine”, “sun”, “HRT”</p>
+    </div>
+
+    <div class="row">
+      <%= f.label :specific, "Specific details" %>
+      <%= f.text_field :specific %>
+      <p>If needed, e.g. “red wine”</p>
+    </div>
+
+    <%= f.submit "Classify" %>
+  <% end %>
+</div>
+
+<div id="skip">
+  <% form_for @vote do |f| %>
+    <%= f.hidden_field :article_id %>
+    <%= f.hidden_field :effect, :value => "skip" %>
+    <%= f.submit "Irrelevant" %>
+  <% end %>
+</div>

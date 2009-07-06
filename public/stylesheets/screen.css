@@ -1,0 +1,20 @@
+body {
+  font-family "Helvetica", "Tahoma", sans-serif;
+}
+#header {
+  background-color: #efe;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5em 1em;
+}
+#header h1 {
+  margin: 0;
+}
+#main {
+  padding: 1em;
+}
+#summary {
+  border: 1px solid #ddd;
+  background-color: #ffc;
+  font-style: italic;
+  padding: 0 1em;
+}

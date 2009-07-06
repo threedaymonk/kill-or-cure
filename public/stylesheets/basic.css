@@ -1,0 +1,146 @@
+/*** Basic styles ***/
+
+body {
+  font-family: "Constantia", "Georgia", "Times", "Times New Roman", serif;
+  line-height: 1.5em;
+}  
+
+/* header fonts */
+
+h1, h2, h3, h4, h5, h6, th, dt, #header {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.1ex;
+  line-height: 1em;
+}
+
+/* fixed-width fonts */
+
+pre, code, kbd, samp, tt {
+  font-family: "Consolas", "Inconsolata", "Lucida Console", "Monaco", "Bitstream Vera Sans Mono", monospace;
+}
+pre, code {
+  border: 1px solid #cde;
+  background-color: #def;
+}
+pre code {
+  border: none;
+}
+kbd {
+  font-weight: bold;
+}
+
+/* basic spacing of block-level elements */
+
+p, ul, ol, dl, form, blockquote, h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0;
+}
+
+/* headers - margins are based on reciprocal of font size */
+
+h1 {
+  font-size: 200%;
+  margin: 0.5em 0;
+}
+h2 {
+  font-size: 150%;
+  margin: 0.67em 0;
+}
+h3 {
+  font-size: 125%;
+  margin: 0.8em 0;
+}
+
+/* links */
+
+a {
+  text-decoration: underline;
+  color: #05a;
+}
+a:visited {
+  color: #50a;
+}
+a:hover, a:focus, a:active {
+}
+a:focus, a:active {
+}
+
+/* basic elements */
+
+img, a img {
+}
+small {
+}
+abbr, acronym {
+}
+blockquote {
+  margin-left: 1.2em;
+  padding-left: 0.8em;
+  border-left: 2pt solid #000;
+  font-style: italic;
+}
+blockquote em {
+  font-style: normal;
+}
+cite {
+  font-style: italic;
+}
+em {
+  font-style: italic;
+}
+strong {
+  font-weight: bold;
+}
+
+/* forms */
+
+form {
+}
+fieldset {
+}
+legend {
+}
+label {
+}
+input {
+}
+select {
+}
+option {
+}
+textarea {
+}
+input:focus, select:focus, option:focus, textarea:focus {
+}
+
+/* tables */
+
+td, th {
+  border: 1pt solid #bbb;
+  padding: 0.2em 0.5em;;
+}
+caption {
+  font-style: italic;
+  font-size: 85%;
+  margin-bottom: 0.2em;
+}
+
+/* lists */
+
+ul, ol {
+  margin-left: 2em;
+}
+li {
+  list-style-position: outside;
+}
+ol li {
+  list-style-type:decimal;
+}
+ul li {
+  list-style-type: disc;
+}
+dd {
+  padding-left: 2em;
+}
+
+
