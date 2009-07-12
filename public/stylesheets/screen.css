@@ -37,3 +37,8 @@
   font-style: italic;
   padding: 0 1em;
 }
+#percentComplete {
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+}
