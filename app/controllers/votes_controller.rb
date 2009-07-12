@@ -5,7 +5,17 @@ class VotesController < ApplicationController
   end
 
   def create
-    Vote.create!(params[:vote])
+    attributes = {:article_id => params[:vote][:article_id], :general => params[:vote][:general]}
+    if params[:prevent]
+      attributes[:effect] = "prevent"
+    elsif params[:cause]
+      attributes[:effect] = "cause"
+    else
+      attributes[:effect] = "skip"
+    end
+    if attributes[:effect] == "skip" || attributes[:general].present?
+      Vote.create!(attributes)
+    end
     redirect_to new_vote_path
   end
 end
