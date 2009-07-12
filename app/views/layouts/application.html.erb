@@ -7,7 +7,12 @@
   </head>
   <body>
     <div id="header">
-      <h1>Kill or cure?</h1>
+      <h1><%= link_to "Kill or cure?", homepage_path %></h1>
+      <p>
+        Help to make sense of the Daily Mail’s ongoing effort to classify every
+        inanimate object into those that cause cancer and those that prevent
+        it.
+      </p>
     </div>
     <div id="main">
       <%= yield %>
