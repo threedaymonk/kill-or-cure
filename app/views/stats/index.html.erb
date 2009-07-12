@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Votes</th>
+    <th>Cause</th>
+    <th>Prevent</th>
+  </tr>
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= h(truncate(article.title, 50)) %></td>
+      <td><%= article.votes.count %></td>
+      <td><%= h(article.causes * ", ") %></td>
+      <td><%= h(article.preventors * ", ") %></td>
+    </tr>
+  <% end %>
+</table>
+<div>
+  <%= will_paginate @articles %>
+</div>
