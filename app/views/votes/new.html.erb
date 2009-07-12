@@ -24,14 +24,14 @@
         <strong>Capital letters don’t matter</strong>.
       </li>
       <li>
-        If the article isn’t about something that causes or prevents cancer, or if it’s ambiguous, <strong>skip it</strong>.
+        If the article isn’t about something that causes or prevents cancer, or if it’s ambiguous, choose <strong>neither</strong>.
       </li>
     </ul>
 
     <div class="row">
       <%= f.submit "Causes cancer",   :name => "cause" %>
       <%= f.submit "Prevents cancer", :name => "prevent" %>
-      <%= f.submit "Skip this",       :name => "skip" %>
+      <%= f.submit "Neither",         :name => "skip" %>
     </div>
 
   <% end %>
