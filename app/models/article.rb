@@ -5,10 +5,10 @@ class Article < ActiveRecord::Base
   named_scope :most_voted, :order => "articles.votes_count DESC"
 
   def causes
-    votes.causing.map{ |v| v.things }.flatten.sort.uniq
+    votes.select{ |v| v.effect == "cause" }.map{ |v| v.things }.flatten.sort.uniq
   end
 
   def preventors
-    votes.preventing.map{ |v| v.things }.flatten.sort.uniq
+    votes.select{ |v| v.effect = "prevent" }.map{ |v| v.things }.flatten.sort.uniq
   end
 end

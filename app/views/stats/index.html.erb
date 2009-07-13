@@ -7,8 +7,8 @@
   </tr>
   <% @articles.each do |article| %>
     <tr>
-      <td><%= h(truncate(article.title, 50)) %></td>
-      <td><%= article.votes.count %></td>
+      <td><%= h(truncate(article.title, :length => 50)) %></td>
+      <td><%= article.votes.length %></td>
       <td><%= h(article.causes * ", ") %></td>
       <td><%= h(article.preventors * ", ") %></td>
     </tr>
