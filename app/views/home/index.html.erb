@@ -34,6 +34,12 @@
   I’ll then collate your research into a summary so that we
   all know how best to live our lives.
 </p>
-<p>
-  <%= link_to "Get started!", new_vote_path %>
-</p>
+<% if @percent_complete < 100 %>
+  <p>
+    <%= link_to "Get started!", new_vote_path %>
+  </p>
+<% else %>
+  <p>
+    We’ve done it! <%= link_to "See the interim results", stats_path %>.
+  </p>
+<% end %>
