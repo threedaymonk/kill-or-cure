@@ -9,6 +9,6 @@ class Article < ActiveRecord::Base
   end
 
   def preventors
-    votes.select{ |v| v.effect = "prevent" }.map{ |v| v.things }.flatten.sort.uniq
+    votes.select{ |v| v.effect == "prevent" }.map{ |v| v.things }.flatten.sort.uniq
   end
 end
