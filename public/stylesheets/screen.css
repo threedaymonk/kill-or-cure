@@ -62,3 +62,8 @@ ul.cause {
 ul.prevent {
   color: #0b0;
 }
+span.debug,
+span.debug a {
+  font-size: 12px;
+  color: #888;
+}

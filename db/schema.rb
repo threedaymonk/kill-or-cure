@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090714204353) do
+ActiveRecord::Schema.define(:version => 20090719224733) do
 
   create_table "articles", :force => true do |t|
     t.text     "link"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20090714204353) do
     t.integer "normalized_term_id"
     t.integer "article_id"
     t.boolean "good"
+    t.integer "votes_against",      :default => 0
   end
 
   create_table "normalized_terms", :force => true do |t|

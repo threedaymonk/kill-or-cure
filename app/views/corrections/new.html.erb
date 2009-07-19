@@ -1,0 +1,32 @@
+<p>If this entry is incorrect, i.e. it doesn't refer to the item mentioned, or the conclusion is invalid, please submit a report. The item will be removed from the results in due course.</p>
+<% form_tag corrections_path(:id => @tagging.id) do %>
+  <table>
+    <tr>
+      <th>Thing</th>
+      <td><%= h(@tagging.normalized_term.value) %></td>
+    </tr>
+    <tr>
+      <th>Effect</th>
+      <td><%= @tagging.good? ? "Prevents cancer" : "Causes cancer" %></td>
+    </tr>
+    <tr>
+      <th>Headline</th>
+      <td><%= h(@tagging.article.title) %></td>
+    </tr>
+    <tr>
+      <th>Summary</th>
+      <td><%= h(@tagging.article.summary) %></td>
+    </tr>
+    <tr>
+      <th>URL</th>
+      <td><%= link_to(@tagging.article.link, @tagging.article.link, :target => "_blank") %></td>
+    </tr>
+  </table>
+
+  <%= hidden_field_tag "backlink", @backlink %>
+
+  <p>
+    <input type="submit" value="Yes, this is incorrect" />
+    <%= link_to "No, take me back", :back %>
+  </p>
+<% end %>
