@@ -42,3 +42,23 @@
   top: 0.5em;
   right: 1em;
 }
+
+h2.termHeading {
+  font-weight: normal;
+}
+h2.termHeading em {
+  font-weight: bold;
+  font-style: normal;
+}
+h2.termHeading strong.cause {
+  color: #b00;
+}
+h2.termHeading strong.prevent {
+  color: #0b0;
+}
+ul.cause {
+  color: #b00;
+}
+ul.prevent {
+  color: #0b0;
+}

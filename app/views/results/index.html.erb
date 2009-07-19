@@ -1,0 +1,38 @@
+<% @terms.each do |term| %>
+  <h2 class="termHeading <%= term.effect %>">
+    <em><%= h(term.value) %></em>
+    <% case term.effect; when :cause %>
+      <strong class="cause">cause<%= "s" unless term.plural? %></strong>
+    <% when :prevent %>
+      <strong class="prevent">prevent<%= "s" unless term.plural? %></strong>
+    <% when :both %>
+      both <strong class="cause">cause<%= "s" unless term.plural? %></strong>
+      and <strong class="prevent">prevent<%= "s" unless term.plural? %></strong>
+    <% end %>
+    cancer
+  </h2>
+
+  <% if term.causes? %>
+    <ul class="cause">
+      <% term.causes_articles.each do |article| %>
+        <li>
+          <%= link_to article.title, article.link %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if term.prevents? %>
+    <ul class="prevent">
+      <% term.prevents_articles.each do |article| %>
+        <li>
+          <%= link_to article.title, article.link %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<div>
+  <%= will_paginate @terms %>
+</div>

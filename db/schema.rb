@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090706224559) do
+ActiveRecord::Schema.define(:version => 20090714204353) do
 
   create_table "articles", :force => true do |t|
     t.text     "link"
@@ -18,6 +18,27 @@ ActiveRecord::Schema.define(:version => 20090706224559) do
     t.integer  "votes_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "normalized_taggings", :force => true do |t|
+    t.integer "normalized_term_id"
+    t.integer "article_id"
+    t.boolean "good"
+  end
+
+  create_table "normalized_terms", :force => true do |t|
+    t.string "value"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer "term_id"
+    t.integer "article_id"
+    t.boolean "good"
+  end
+
+  create_table "terms", :force => true do |t|
+    t.string  "value"
+    t.integer "normalized_term_id"
   end
 
   create_table "votes", :force => true do |t|

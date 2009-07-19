@@ -1,5 +1,8 @@
 class Article < ActiveRecord::Base
   has_many :votes
+  has_many :taggings
+  has_many :terms, :through => :taggings
+  has_many :normalized_terms, :through => :normalized_taggings
 
   named_scope :to_do, :order => "articles.votes_count ASC, RANDOM()"
   named_scope :most_voted, :order => "articles.votes_count DESC"

@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require File.join(File.dirname(__FILE__), "..", "config", "environment")
+require "csv"
+
+[NormalizedTerm, Term, Tagging].each do |klass|
+  klass.delete_all
+end
+
+CSV.open(ARGV.first, "r") do |row|
+  t, n, = row
+
+  next if ["x", "?"].include?(n)
+
+  normalized_term = NormalizedTerm[n]
+  term = Term[t]
+  term.normalized_term = normalized_term
+  term.save!
+end
+
+Article.all.each do |article|
+  article.causes.each do |word|
+    article.taggings.create!(:term => Term[word], :good => false)
+  end
+  article.preventors.each do |word|
+    article.taggings.create!(:term => Term[word], :good => true)
+  end
+end
+
+Tagging.all(:include => :term).each do |tagging|
+  next if NormalizedTagging.find_by_article_id_and_normalized_term_id_and_good(
+            tagging.article_id,
+            tagging.term.normalized_term_id,
+            tagging.good)
+  NormalizedTagging.create!(
+    :article_id         => tagging.article_id,
+    :normalized_term_id => tagging.term.normalized_term_id,
+    :good               => tagging.good)
+end
+
+NormalizedTerm.all.each do |nt|
+  nt.destroy if nt.articles.empty?
+end
