@@ -1,6 +1,7 @@
 class NormalizedTerm < ActiveRecord::Base
   has_many :terms
-  has_many :normalized_taggings
+  has_many :normalized_taggings,
+           :conditions => ["votes_against < 3"]
   has_many :articles,
            :through    => :normalized_taggings
 
