@@ -1,9 +1,11 @@
-<p>If any of these results seems incorrect, please use the link next to the article in question to report it.</p>
+<p>
+  If any of these results seems incorrect, please report is using the link next to the article.
+</p>
 
 <% @terms.each do |term| %>
   <% next unless term.articles.any? %>
 
-  <h2 class="termHeading <%= term.effect %>">
+  <h2 id="term<%= term.id %>" class="termHeading <%= term.effect %>">
     <em><%= h(term.value) %></em>
     <% case term.effect; when :cause %>
       <strong class="cause">cause<%= "s" unless term.plural? %></strong>
@@ -14,6 +16,7 @@
       and <strong class="prevent">prevent<%= "s" unless term.plural? %></strong>
     <% end %>
     cancer
+    <a href="#term<%= term.id %>" class="directLink">#</a>
   </h2>
 
   <% if term.causes? %>

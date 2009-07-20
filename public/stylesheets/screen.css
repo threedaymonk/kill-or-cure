@@ -56,6 +56,9 @@ h2.termHeading strong.cause {
 h2.termHeading strong.prevent {
   color: #0b0;
 }
+h2.termHeading a.directLink {
+  color: #888;
+}
 ul.cause {
   color: #b00;
 }
