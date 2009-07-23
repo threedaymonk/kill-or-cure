@@ -1,0 +1,9 @@
+<ul class="pagination">
+  <% @letters.each do |letter| %>
+    <% if @letter == letter %>
+      <li><strong><%= letter.upcase %></strong></li>
+    <% else %>
+      <li><%= link_to letter.upcase, results_path(:letter => letter) %></li>
+    <% end %>
+  <% end %>
+</ul>

@@ -1,6 +1,4 @@
-<div class="pagination">
-  <%= will_paginate @terms %>
-</div>
+<%= render :partial => "pagination" %>
 
 <p>
   If any of these results seems incorrect, please report it using the link next to the article.
@@ -50,6 +48,4 @@
   <% end %>
 <% end %>
 
-<div class="pagination">
-  <%= will_paginate @terms %>
-</div>
+<%= render :partial => "pagination" %>
