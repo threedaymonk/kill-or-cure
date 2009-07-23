@@ -70,3 +70,20 @@ span.debug a {
   font-size: 12px;
   color: #888;
 }
+ul.pagination {
+  padding-left: 0;
+  margin-left: 0;
+}
+ul.pagination li {
+  display: inline;
+}
+ul.pagination li * {
+  border: 1px solid #444;
+  padding: 1px 4px;
+  font-weight: normal;
+  text-decoration: none;
+}
+ul.pagination li strong {
+  color: #fff;
+  background-color: #444;
+}
