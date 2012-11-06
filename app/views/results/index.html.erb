@@ -26,9 +26,6 @@
       <% term.causes_articles.each do |article| %>
         <li>
           <%= link_to article.title, article.link %>
-          <span class="debug">[<%=
-            link_to("Incorrect?", new_correction_path(:article_id => article.id, :normalized_term_id => term.id, :good => 0))
-            %>]</span>
         </li>
       <% end %>
     </ul>
@@ -39,9 +36,6 @@
       <% term.prevents_articles.each do |article| %>
         <li>
           <%= link_to article.title, article.link %>
-          <span class="debug">[<%=
-            link_to("Incorrect?", new_correction_path(:article_id => article.id, :normalized_term_id => term.id, :good => 1))
-            %>]</span>
         </li>
       <% end %>
     </ul>
