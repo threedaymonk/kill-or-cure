@@ -4,8 +4,8 @@ class Article < ActiveRecord::Base
   has_many :terms, :through => :taggings
   has_many :normalized_terms, :through => :normalized_taggings
 
-  named_scope :to_do, :order => "articles.votes_count ASC, RANDOM()"
-  named_scope :most_voted, :order => "articles.votes_count DESC"
+  scope :to_do, :order => "articles.votes_count ASC, RANDOM()"
+  scope :most_voted, :order => "articles.votes_count DESC"
 
   def causes
     votes.select{ |v| v.effect == "cause" }.map{ |v| v.things }.flatten.sort.uniq

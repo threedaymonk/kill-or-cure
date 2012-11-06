@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: killorcure_development
+  min_messages: WARNING
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: killorcure_test
+  min_messages: WARNING
