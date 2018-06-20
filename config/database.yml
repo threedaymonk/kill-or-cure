@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: killorcure_development
+  database: kill_or_cure_development
   min_messages: WARNING
 
 test:

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
-ruby "2.3.0"
+ruby "2.5.1"
 
-gem "rails", "~> 3.2"
+gem "rails"
 gem "pg"
 gem "thin"
 gem "will_paginate"
