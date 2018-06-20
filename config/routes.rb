@@ -1,9 +1,9 @@
 KillOrCure::Application.routes.draw do
-  match "/about"       => "home#index",    :as => :homepage
-  match "/stats"       => "stats#index",   :as => :stats
-  match "/"            => "results#index", :as => :results
-  match "/a-z/:letter" => "results#index", :as => :results
-  match "/done"        => "votes#done",    :as => :done
+  get "/about"       => "home#index",    :as => :homepage
+  get "/stats"       => "stats#index",   :as => :stats
+  get "/"            => "results#index"
+  get "/a-z/:letter" => "results#index", :as => :results
+  get "/done"        => "votes#done",    :as => :done
   resources :votes
   resources :corrections
 end

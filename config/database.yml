@@ -1,11 +1,14 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: kill_or_cure_development
-  min_messages: WARNING
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-test:
-  adapter: postgresql
-  encoding: unicode
+development:
+  <<: *default
+  database: killorcure_development
+
+test: &test
+  <<: *default
   database: killorcure_test
-  min_messages: WARNING

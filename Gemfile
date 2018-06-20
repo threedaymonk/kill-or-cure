@@ -5,3 +5,7 @@ gem "rails"
 gem "pg"
 gem "thin"
 gem "will_paginate"
+
+group :development do
+  gem "listen"
+end

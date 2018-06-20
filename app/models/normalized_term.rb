@@ -1,28 +1,31 @@
 class NormalizedTerm < ActiveRecord::Base
   has_many :terms
-  has_many :normalized_taggings,
-           :conditions => ["votes_against < 3"]
+  has_many :normalized_taggings
   has_many :articles,
            :through    => :normalized_taggings
+
+  def uncontroversial_taggings
+    normalized_taggings.uncontroversial
+  end
 
   def self.[](value)
     n = find_by_value(value) || create!(:value => value)
   end
 
   def causes_articles
-    normalized_taggings.select{ |t| !t.good? }.map{ |t| t.article }
+    uncontroversial_taggings.select{ |t| !t.good? }.map{ |t| t.article }
   end
 
   def prevents_articles
-    normalized_taggings.select{ |t| t.good? }.map{ |t| t.article }
+    uncontroversial_taggings.select{ |t| t.good? }.map{ |t| t.article }
   end
 
   def causes?
-    normalized_taggings.any?{ |t| !t.good? }
+    uncontroversial_taggings.any?{ |t| !t.good? }
   end
 
   def prevents?
-    normalized_taggings.any?{ |t| t.good? }
+    uncontroversial_taggings.any?{ |t| t.good? }
   end
 
   def effect
